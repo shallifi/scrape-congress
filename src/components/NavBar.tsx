@@ -5,6 +5,7 @@ import MenuToggle from "./MenuToggle";
 const NavBar = () => {
   return (
     <div className="navbar bg-base-100">
+        <MenuToggle />
       {/* <div className="flex-none">
         <button className="btn btn-square btn-ghost">
           <svg
@@ -23,7 +24,6 @@ const NavBar = () => {
         </button>
     
       </div> */}
-        <MenuToggle />
       <div className="flex-1">
         <a className="btn btn-ghost text-xl">ECNE</a>
       </div>
