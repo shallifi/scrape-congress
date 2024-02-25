@@ -3,6 +3,7 @@ import "./App.css";
 import QueryInput from "./components/QueryInput";
 import { fetchQuery } from "./api/query";
 import { Results } from "./components/Results";
+// import logo from "./assets/logo.jpeg";
 
 function App() {
   const [results, setResults] = useState<string>("");
@@ -19,7 +20,15 @@ function App() {
   };
 
   return (
+    
     <div className="flex flex-col">
+      <header className="header-container">
+      {/* <div className="logo-container">
+      <img src={logo} alt="logo" className="main-logo" />
+      </div> */}
+      <h1 className="text-brand-name" >Ecne</h1>
+      
+      </header>
       <QueryInput onSubmit={onSubmit} />
       <Results results={results} />
     </div>
