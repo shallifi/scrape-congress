@@ -4,7 +4,7 @@ const QueryInput = () => {
   return (
     <div className="w-full">
       <div className="flex flex-col gap-3">
-        <p className="text-gray-700">
+        <p>
           Ask the questions, get to the source! Decide for yourself.
         </p>
         <textarea

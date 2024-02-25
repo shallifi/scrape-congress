@@ -4,11 +4,14 @@ import { fetchQuery } from "./api/query";
 import { Results } from "./components/Results";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import InputForm from "./components/InputForm";
+import NavBar from "./components/NavBar";
+
 
 const queryClient = new QueryClient();
 
 function App() {
   const [results, setResults] = useState([]);
+
 
   const onSubmit = async (values) => {
     try {
@@ -23,8 +26,9 @@ function App() {
   return (
     <div className="container mx-auto p-2" style={{ border: "2px solid" }}>
       <div className="flex flex-col items-center">
+          <NavBar />
         <header className="">
-          <h1 className="">Ecne</h1>
+          <h1 className="">Filter by Tags</h1>
         </header>
 
         <QueryClientProvider client={queryClient}>

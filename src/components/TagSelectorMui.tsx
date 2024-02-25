@@ -31,7 +31,7 @@ const TagSelectorMui = () => {
         <TextField
           name="tags"
           {...params}
-          label="Filter By Tags"
+          label="add / remove"
           placeholder="Tags"
         />
       )}
