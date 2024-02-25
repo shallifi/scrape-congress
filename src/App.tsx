@@ -1,28 +1,20 @@
-import { FormEventHandler, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import QueryInput from "./components/QueryInput";
 import { fetchQuery } from "./api/query";
 import { Results } from "./components/Results";
-import TagSelector from "./components/TagSelectorMui";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import InputForm from "./components/InputForm";
 
 const queryClient = new QueryClient();
 
 function App() {
-  const [results, setResults] = useState<string>("");
+  const [results, setResults] = useState([]);
 
   const onSubmit = async (values) => {
-    // e.preventDefault();
-
-    // const formData = new FormData(e.currentTarget);
-    // const query = formData.get("queryInput");
-    // const tags = formData.get("tags");
-    // console.log({ tags, query });
     try {
       const response = await fetchQuery(values);
       console.log({ response });
-      // setResults(response.results);
+      setResults(response.result);
     } catch (error) {
       console.error(error);
     }
@@ -36,8 +28,10 @@ function App() {
         </header>
 
         <QueryClientProvider client={queryClient}>
-          <InputForm onSubmit={onSubmit} />
-          <Results results={results} />
+          <div className="flex flex-col items-center gap-4">
+            <InputForm onSubmit={onSubmit} />
+            <Results results={results} />
+          </div>
         </QueryClientProvider>
       </div>
     </div>
