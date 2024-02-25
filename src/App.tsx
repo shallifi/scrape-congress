@@ -3,34 +3,43 @@ import "./App.css";
 import QueryInput from "./components/QueryInput";
 import { fetchQuery } from "./api/query";
 import { Results } from "./components/Results";
-// import logo from "./assets/logo.jpeg";
+import TagSelector from "./components/TagSelectorMui";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import InputForm from "./components/InputForm";
+
+const queryClient = new QueryClient();
 
 function App() {
   const [results, setResults] = useState<string>("");
 
-  const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault();
-    const query = new FormData(e.currentTarget).get("queryInput") as string;
+  const onSubmit = async (values) => {
+    // e.preventDefault();
+
+    // const formData = new FormData(e.currentTarget);
+    // const query = formData.get("queryInput");
+    // const tags = formData.get("tags");
+    // console.log({ tags, query });
     try {
-      const response = await fetchQuery(query);
-      setResults(response.results);
+      const response = await fetchQuery(values);
+      console.log({ response });
+      // setResults(response.results);
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    
-    <div className="flex flex-col">
-      <header className="header-container">
-      {/* <div className="logo-container">
-      <img src={logo} alt="logo" className="main-logo" />
-      </div> */}
-      <h1 className="text-brand-name" >Ecne</h1>
-      
-      </header>
-      <QueryInput onSubmit={onSubmit} />
-      <Results results={results} />
+    <div className="container mx-auto p-2" style={{ border: "2px solid" }}>
+      <div className="flex flex-col items-center">
+        <header className="">
+          <h1 className="">Ecne</h1>
+        </header>
+
+        <QueryClientProvider client={queryClient}>
+          <InputForm onSubmit={onSubmit} />
+          <Results results={results} />
+        </QueryClientProvider>
+      </div>
     </div>
   );
 }

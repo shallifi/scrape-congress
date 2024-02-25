@@ -1,26 +1,22 @@
 import { FormEventHandler } from "react";
 
-type QueryInputProps = {
-  onSubmit: FormEventHandler<HTMLFormElement>;
-};
-
-const QueryInput = ({ onSubmit }: QueryInputProps) => {
+const QueryInput = () => {
   return (
-    <form onSubmit={onSubmit}>
-      <div>
-        <p className="text-gray-700">Ask the questions, get to the source! Decide for yourself.</p>
-        <input
-          name="queryInput"
-          type="text"
-          placeholder="Type here"
-          // className="input input-bordered w-full max-w-xs"
-          className="text-input-box"
-        />
-      </div>
-        <button className="btn btn-accent" type="submit">
+    <div className="w-full">
+      <div className="flex flex-col gap-3">
+        <p className="text-gray-700">
+          Ask the questions, get to the source! Decide for yourself.
+        </p>
+        <textarea
+          name="query"
+          className="textarea textarea-bordered min-h-48 "
+          placeholder="What do you want to know about congress?"
+        ></textarea>
+        <button className="btn btn-accent w-full" type="submit">
           Search
         </button>
-    </form>
+      </div>
+    </div>
   );
 };
 
