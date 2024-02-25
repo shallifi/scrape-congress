@@ -4,6 +4,7 @@ type ResultsCardProps = {
   header: string;
   document: string;
   original_content: string;
+  source_url: string;
   hash: number;
   metadata: Record<string, string>;
 };
@@ -14,6 +15,7 @@ type ResultsProps = {
 const ResultsCard = ({
   header,
   original_content,
+  source_url,
   metadata,
 }: ResultsCardProps) => {
   return (
@@ -22,7 +24,11 @@ const ResultsCard = ({
         <h2 className="card-title">{header}</h2>
       </div>
       <TextClamp text={original_content} />
-      <div className="p-3">{original_content}</div>
+
+      <a className="link py-4 px-2" href={source_url} target="_blank">
+        {source_url}
+      </a>
+
       <div className="collapse bg-base-200">
         <input type="checkbox" />
         <div className="collapse-title text-xl font-medium">
@@ -43,6 +49,7 @@ export const Results = ({ results }: ResultsProps) => {
         <ResultsCard
           key={index}
           header={result.header}
+          source_url={result.source_url}
           original_content={result.original_content}
           metadata={result.metadata}
         />
