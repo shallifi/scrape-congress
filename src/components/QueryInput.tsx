@@ -15,10 +15,10 @@ const QueryInput = ({ onSubmit }: QueryInputProps) => {
           placeholder="Type here"
           className="input input-bordered w-full max-w-xs"
         />
+      </div>
         <button className="btn btn-accent" type="submit">
           Search
         </button>
-      </div>
     </form>
   );
 };
